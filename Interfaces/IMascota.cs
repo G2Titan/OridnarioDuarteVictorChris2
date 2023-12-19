@@ -20,7 +20,7 @@ namespace OridnarioDuarteVictorChris.Interfaces
         
 
         public int Edad {  get; set; }
-        public string Temperamento {  get; set; }
+        void Temperamento();
         public IPersona Dueño { get; set; }
        void HacerRuido();
 
