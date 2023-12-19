@@ -73,5 +73,9 @@ namespace OridnarioDuarteVictorChris.Clases
         {
             Console.WriteLine("-Aleteo de miedo imparable");
         }
+        public void Bailar()
+        {
+            Console.WriteLine($"{Nombre} esta agitando las plumas");
+        }
     }
 }
