@@ -12,7 +12,7 @@ namespace OridnarioDuarteVictorChris.Interfaces
          int id { get; }
         public string Nombre { get; set; } 
         public int Edad {  get; set; }
-        public string Temperamento {  get; set; }
+        void Temperamento();
         public IPersona Dueño { get; set; }
        void HacerRuido();
         void CambiarDueño(IPersona newDueño);

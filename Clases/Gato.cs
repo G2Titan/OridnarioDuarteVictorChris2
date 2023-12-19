@@ -31,7 +31,11 @@ namespace OridnarioDuarteVictorChris.Clases
                 _edad = value;
             }
             }
-        public string Temperamento { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public void Temperamento()
+        {
+            Random random = new Random();
+            random.Next();
+        }
         private IPersona _Dueño;
         public IPersona Dueño { get { return _Dueño; }
             set { _Dueño = value; }
@@ -47,11 +51,11 @@ namespace OridnarioDuarteVictorChris.Clases
         {
             Console.WriteLine($"{this.Nombre} dice miau miau");
         }
-      
+
+        public void ResponderCaricia()
+        {
+            Console.WriteLine("El gato responde a su temperamento");
+        }        
     }
-    public enum EspecieMascota
-    {
-        amable,
-        nervioso,
-        agresivo       }
+
 }

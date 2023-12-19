@@ -7,82 +7,61 @@ namespace OridnarioDuarteVictorChris.Clases
 {
     public class Persona : IPersona
     {
-        private string _nombre;
-        public string Nombre
-        {
-            get
-            {
-                return _nombre;
-            }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("El nombre no puede ser un espacio en blanco o ser vacío");
-                }
-                else { _nombre = value; }
-            }
-        }
-        private static int _id = 1;
+        private static int contadorId = 1;
         public int Id { get; }
-        string IPersona.Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Nombre { get; }
+        private List<Mascota> mascotas;
 
-        private List<IMascota> MascotasDePersonas;
-        private List<IMascota> MascotasDisponibles;
-
-        public Persona(string nombre, List<IMascota> mascotasDisponibles)
+        public Persona(string nombre)
         {
+            if (string.IsNullOrWhiteSpace(nombre))
+                throw new ArgumentException("El nombre de la persona no puede estar en blanco.");
+
+            Id = contadorId++;
             Nombre = nombre;
-            MascotasDePersonas = new List<IMascota>();
-            MascotasDisponibles = mascotasDisponibles;
-            Id = _id++;
+            mascotas = new List<Mascota>();
         }
 
-        public List<IMascota> ObtenerMascotas()
+        public List<Mascota> ObtenerMascotas()
         {
-            List<IMascota> TodasLasMascotas = new List<IMascota>(MascotasDisponibles);
-            MascotasDisponibles.Clear();
-            return TodasLasMascotas;
+            return mascotas;
         }
 
-        public void MascotaPorId(int id)
+        public Mascota ObtenerMascotaPorId(int id)
         {
-            IMascota mascota = MascotasDisponibles.Find(p => p.id == id);
-            if (mascota != null)
-            {
-                AgregarMascota(mascota);
-            }
-            else
-            {
-                Console.WriteLine($"No existe el id de esa mascota");
-            }
+            return mascotas.Find(m => m.Id == id);
         }
 
-        private void AgregarMascota(IMascota newMascota)
+        public void AgregarMascota(Mascota mascota)
         {
-            MascotasDePersonas.Add(newMascota);
+            mascotas.Add(mascota);
+            Console.WriteLine($"{Nombre} agrega a {mascota.Nombre} a sus mascotas.");
+            mascota.HacerRuido();
         }
 
-        public void Acariciar()// Aquí falta implementar cómo saber qué mascota quiere acariciar
+        public void Acariciar(Mascota mascota)
         {
-            Console.WriteLine("Estoy acariciando");
+            Console.WriteLine($"{Nombre} acaricia a {mascota.Nombre}: {mascota.Acariciar()}");
         }
 
         public void AcariciarMascotas()
         {
-            if (MascotasDePersonas.Count > 1)
+            foreach (var mascota in mascotas)
             {
-                foreach (var mascota in MascotasDePersonas)
+                if (mascota is IAcariciable)
                 {
-                    Console.WriteLine($"{mascota.Nombre} la estoy acariciando");
-                    Thread.Sleep(1500);
+                    Acariciar(mascota);
+                }
+                else
+                {
+                    Console.WriteLine($"{Nombre} intenta acariciar a {mascota.Nombre}, pero no es posible.");
                 }
             }
-            else if (MascotasDePersonas.Count == 0)
-
+         if (MascotasDePersonas.Count == 0)
             {
                 Console.WriteLine($"{this.Nombre}, No tienes ninguna mascota:( ");
             }
         }
     }
 }
+
