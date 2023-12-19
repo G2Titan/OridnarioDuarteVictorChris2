@@ -19,7 +19,10 @@ public class Perro : IMascota
         }
     }
     
-    public string Temperamento { get; set; }
+    public void Temperamento()
+    {
+       
+    }
     public IPersona Dueño { get; set; }
 
     public void CambiarDueño(IPersona newDueño)
@@ -41,6 +44,11 @@ public class Perro : IMascota
     public void Gruñir()
     {
         Console.WriteLine($"{Nombre} está gruñendo");
+    }
+
+    public void ResponderCaricia()
+    {
+        Console.WriteLine($"{this.Nombre} Mueve la cola");
     }
 }
 
