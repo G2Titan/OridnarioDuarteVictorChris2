@@ -6,7 +6,8 @@ class Capibara : IMascota
     private string _nombre;
     private int _edad;
     private string _temperamento;
-    public int id => throw new NotImplementedException();
+    private static int _id = 1;
+    public int id { get; }
     public string Nombre 
     {
         get
@@ -53,16 +54,21 @@ class Capibara : IMascota
             }
         }
     }
-    public IPersona Dueño { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public IPersona Dueño { get; set; }
 
     public void CambiarDueño(IPersona newDueño)
     {
-        throw new NotImplementedException();
+        Dueño = newDueño;
+        Console.WriteLine($"El dueño de {Nombre} ha sido cambiado a {newDueño.Nombre}");
     }
 
     public void HacerRuido()
     {
         Console.WriteLine("cui cui");
+    }
+    public void SaludarAlProfe()
+    {
+        Console.WriteLine("Hola profesor Duarte, tenga compasión de estas pobres almas:(");
     }
 }
 
