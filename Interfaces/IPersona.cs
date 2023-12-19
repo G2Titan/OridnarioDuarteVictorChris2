@@ -8,6 +8,11 @@ namespace OridnarioDuarteVictorChris.Interfaces
 {
     public interface IPersona
     {
-        string Nombre { get; set; }      
+        string Nombre { get; set; }     
+        
+        string Id { get; set; }
+
+        public void AcariciarMascotas();
+
     }
 }

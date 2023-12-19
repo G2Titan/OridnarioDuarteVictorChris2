@@ -19,8 +19,17 @@ public class Perro : IMascota
         }
     }
     
-    public string Temperamento { get; set; }
+    public enum Temperamento
+    {
+        feliz, 
+        triste,
+        
+    }
+
+
+
     public IPersona Dueño { get; set; }
+    string IMascota.Temperamento { get; set; }
 
     public void CambiarDueño(IPersona newDueño)
     {
