@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OridnarioDuarteVictorChris.Interfaces
 {
-    internal interface IPersona
+    public interface IPersona
     {
     }
 }
