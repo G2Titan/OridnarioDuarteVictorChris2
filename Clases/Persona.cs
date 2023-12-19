@@ -1,4 +1,5 @@
-﻿using OridnarioDuarteVictorChris.Interfaces;
+﻿
+using OridnarioDuarteVictorChris.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,61 +12,74 @@ using static OridnarioDuarteVictorChris.Interfaces.IPersona;
 
 namespace OridnarioDuarteVictorChris.Clases
 {
-    internal class Persona : IPersona
+    public class Persona : IPersona
     {
         private string _nombre;
-        private int _id;
-        static int contador = 0;
-        private List<IMascota> MascotasDePersonas;
-        private List<IMascota> MascotasDisponibles;
-        public Persona(string nombre)
-        {
-            _nombre = nombre;
-            id = contador + 1;
-            contador++;
-            MascotasDePersonas = new List<IMascota>();
-            MascotasDisponibles = new List<IMascota>();
-        }
-        public int id
-        {
-            get
-            {
-                return _id;
-            }
-            private set
-            {
-                _id = value;
-            }
-        }
         public string Nombre
         {
             get
             {
                 return _nombre;
             }
-            set 
-            {
-                _nombre = value; 
-                if (string.IsNullOrEmpty(value)) 
+            set
+            {               
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("El nombre no puede ser un espacio en blanco o ser vacio");
                 }
+                else { _nombre = value; }
+            }
+        }       
+        private static int _id = 1;
+        public int Id { get; } 
+        private List<IMascota> MascotasDePersonas;
+        private List<IMascota> MascotasDisponibles;
+        public Persona()
+        {
+            MascotasDePersonas = new List<IMascota>();
+            Id = _id++;
+            
+        }
+        public List<IMascota> ObtenerMascotas()
+        {
+            List<IMascota> TodasLasMascotas = new List<IMascota>(MascotasDisponibles);
+            MascotasDisponibles.Clear();
+            return TodasLasMascotas;
+        }
+        public void MascotaPorId(int id)
+        {
+            IMascota mascota= MascotasDisponibles.Find(p=>p.id == id);
+            if (mascota !=null)
+            {
+                AgregarMascota(mascota);
+            }
+            else
+            {
+                Console.WriteLine($"No existe el id de esa mascota");
             }
         }
-        //public MascotasDePersonas();
-        //public MascotasDePersoans ObtenerMascotasId  debe regresar una mascota que este en la colección de la persona y que posea el Id seleccionado.
-        //Si la persona no tiene una mascota con ese Id se retornará null.
-        /*public MascotasDisponibles AgregarMascota(Persona, MascotasDisponibles)
+        private void AgregarMascota(IMascota newMascota)
         {
-            Console.WriteLine($"{Persona.Nombre} agrega a {MascotasDisponibles.Nombre} a sus mascotas");
-            //Comportamiento del animal
+            MascotasDePersonas.Add(newMascota);
         }
-       */
-        /*public MascotasDePersonas Acaririciar (Persona, MascotasDePersonas)
+        public void Acariciar()// Aqui falta implementar como saber que mascota quiere acariciar
         {
-            Console.WriteLine($"{Persona.Nombre} acaricia a {MascotasDePersonas.Nombre} a sus mascotas");
-            //Comportamiento del animal
+            Console.WriteLine("Estoy acarisiando");
         }
-       */
+        public void AcariciarMascotas()
+        {
+            if (MascotasDePersonas.Count > 1)
+            {
+                foreach (var mascota in MascotasDePersonas)
+                {
+                    Console.WriteLine($"{mascota.Nombre} la estoy acariciando");
+                    Thread.Sleep(1500);
+                }
+            }
+            else if(MascotasDePersonas==null)
+            {
+                Console.WriteLine($"{this.Nombre}, No tienes ninguna mascota:( ");
+            }
+        }        
     }
 }
