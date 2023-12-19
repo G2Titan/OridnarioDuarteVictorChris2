@@ -9,12 +9,13 @@ namespace OridnarioDuarteVictorChris.Interfaces
 {
     public interface IMascota
     {
-        public int id { get; }
+         int id { get; }
         public string Nombre { get; set; } 
         public int Edad {  get; set; }
         public string Temperamento {  get; set; }
         public IPersona Dueño { get; set; }
        void HacerRuido();
-      public void CambiarDueño(IPersona newDueño);
+        void CambiarDueño(IPersona newDueño);
+
     }
 }
