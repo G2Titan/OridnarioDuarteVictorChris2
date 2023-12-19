@@ -237,6 +237,132 @@ namespace OridnarioDuarteVictorChris.Clases
                 Console.WriteLine("Entrada no válida. El ID debe ser un número entero.");
             }
         }
+
+        private void MenuAdministracionMascotas()
+        {
+            int opcion;
+
+            do
+            {
+                Console.WriteLine("Administración de mascotas");
+                Console.WriteLine("1 - Mostrar todas las mascotas registradas");
+                Console.WriteLine("2 - Registrar mascota nueva");
+                Console.WriteLine("3 - Buscar mascotas por especie");
+                Console.WriteLine("4 - Buscar mascotas por nombre");
+                Console.WriteLine("5 - Examinar mascota");
+                Console.WriteLine("6 - Volver al menú anterior");
+                Console.Write("Seleccione una opción: ");
+
+                if (int.TryParse(Console.ReadLine(), out opcion))
+                {
+                    switch (opcion)
+                    {
+                        case 1:
+                            MostrarMascotasRegistradas();
+                            break;
+                        case 2:
+                           // RegistrarMascotaNueva();
+                            break;
+                        case 3:
+                            BuscarMascotasPorEspecie();
+                            break;
+                        case 4:
+                            BuscarMascotasPorNombre();
+                            break;
+                        case 5:
+                            ExaminarMascota();
+                            break;
+                        case 6:
+                            Console.WriteLine("Regresando al menú anterior...");
+                            break;
+                        default:
+                            Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Entrada no válida. Inténtelo de nuevo.");
+                }
+
+            } while (opcion != 6);
+        }
+
+        private void MostrarMascotasRegistradas()
+        {
+            Console.WriteLine("Lista de mascotas registradas:");
+            foreach (var mascota in mascotasDisponibles)
+            {
+                Console.WriteLine($"ID: {mascota.id}, Nombre: {mascota.Nombre}, Especie: {mascota.Especie}");
+            }
+        }
+
+
+        private void BuscarMascotasPorEspecie()
+        {
+            Console.Write("Ingrese la especie de las mascotas a buscar: ");
+            string especieBuscar = Console.ReadLine();
+            var mascotasEncontradas = mascotasDisponibles.FindAll(m => m.Especie.Contains(especieBuscar, StringComparison.OrdinalIgnoreCase));
+
+            if (mascotasEncontradas.Count > 0)
+            {
+                Console.WriteLine("Mascotas encontradas:");
+                foreach (var mascota in mascotasEncontradas)
+                {
+                    Console.WriteLine($"ID: {mascota.id}, Nombre: {mascota.Nombre}, Especie: {mascota.Especie}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No se encontraron mascotas con esa especie.");
+            }
+        }
+
+        private void BuscarMascotasPorNombre()
+        {
+            Console.Write("Ingrese el nombre a buscar: ");
+            string nombreBuscar = Console.ReadLine();
+            var mascotasEncontradas = mascotasDisponibles.FindAll(m => m.Nombre.Contains(nombreBuscar, StringComparison.OrdinalIgnoreCase));
+
+            if (mascotasEncontradas.Count > 0)
+            {
+                Console.WriteLine("Mascotas encontradas:");
+                foreach (var mascota in mascotasEncontradas)
+                {
+                    Console.WriteLine($"ID: {mascota.id}, Nombre: {mascota.Nombre}, Especie: {mascota.Especie}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No se encontraron mascotas con ese nombre.");
+            }
+        }
+
+        private void ExaminarMascota()
+        {
+            Console.Write("Ingrese el ID de la mascota a examinar: ");
+            if (int.TryParse(Console.ReadLine(), out int idMascota))
+            {
+                var mascota = mascotasDisponibles.Find(m => m.id.Equals(idMascota));
+
+                if (mascota != null)
+                {
+                    Console.WriteLine($"Información de la mascota:");
+                    Console.WriteLine($"ID: {mascota.id}, Nombre: {mascota.Nombre}, Especie: {mascota.Especie}");
+                }
+                else
+                {
+                    Console.WriteLine($"No se encontró ninguna mascota con el ID {idMascota}.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Entrada no válida. El ID debe ser un número entero.");
+            }
+        }
+
+
+
     }
 }
 
