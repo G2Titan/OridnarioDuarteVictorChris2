@@ -28,7 +28,7 @@
     {
         Console.WriteLine($"Bienvenido al examen Ordinario:)");
         Thread.Sleep(1500);
-        Console.WriteLine($"Precione la opcion a realizar");
+        Console.WriteLine($"Selecciona la opcion deseada");
         Thread.Sleep(500);
         while (true)
         {
