@@ -56,5 +56,9 @@ public class Perro : IMascota
     {
         Console.WriteLine($"{this.Nombre} Mueve la cola");
     }
+    public void Bailar()
+    {
+        Console.WriteLine($"{Nombre} esta realizando unos pasos bien perrones");
+    }
 }
 
