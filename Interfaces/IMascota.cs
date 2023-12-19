@@ -15,7 +15,7 @@ namespace OridnarioDuarteVictorChris.Interfaces
         public string Temperamento {  get; set; }
         public IPersona Dueño { get; set; }
        void HacerRuido();
-        void CambiarDueño(IPersona newDueño);
+      void CambiarDueño(IPersona newDueño);
 
     }
 }
