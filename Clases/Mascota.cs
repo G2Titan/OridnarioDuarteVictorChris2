@@ -33,6 +33,7 @@ class Mascota
         string sonidoGato = ObtenerSonidoPorEspecie(EspecieMascota.Gato);
         string sonidoPerro = ObtenerSonidoPorEspecie(EspecieMascota.Perro);
         string sonidoCapibara = ObtenerSonidoPorEspecie(EspecieMascota.capibara);
+        string sonidoPajaro = ObtenerSonidoPorEspecie(EspecieMascota.Pajaro);
        
         Console.WriteLine($"{Nombre} hace ruido: {sonidoGato}");
     }
@@ -47,6 +48,8 @@ class Mascota
                 return "Miau Miau";
             case EspecieMascota.capibara:
                 return "KU KU KUKU";
+            case EspecieMascota.Pajaro:
+                return "Pio, Pio";
             default:
                 return "Sonido desconocido";
         }
@@ -85,7 +88,8 @@ class Mascota
     {
         Perro,
         Gato,
-        capibara 
+        capibara,
+        Pajaro
     }
 
 
