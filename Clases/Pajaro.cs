@@ -59,6 +59,8 @@ namespace OridnarioDuarteVictorChris.Clases
         }
         public IPersona Dueño { get; set; }
 
+        public string Especie => throw new NotImplementedException();
+
         public void CambiarDueño(IPersona newDueño)
         {
             Dueño = newDueño;
@@ -76,6 +78,11 @@ namespace OridnarioDuarteVictorChris.Clases
         public void Bailar()
         {
             Console.WriteLine($"{Nombre} esta agitando las plumas");
+        }
+
+        void IMascota.Temperamento()
+        {
+            throw new NotImplementedException();
         }
     }
 }

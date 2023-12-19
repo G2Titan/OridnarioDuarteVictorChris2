@@ -29,7 +29,7 @@ public class Perro : IMascota
 
 
     public IPersona Dueño { get; set; }
-    string IMascota.Temperamento { get; set; }
+
 
     public string Especie => throw new NotImplementedException();
 
@@ -61,6 +61,11 @@ public class Perro : IMascota
     public void Bailar()
     {
         Console.WriteLine($"{Nombre} esta realizando unos pasos bien perrones");
+    }
+
+    void IMascota.Temperamento()
+    {
+        throw new NotImplementedException();
     }
 }
 

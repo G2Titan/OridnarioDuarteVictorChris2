@@ -41,6 +41,8 @@ namespace OridnarioDuarteVictorChris.Clases
             set { _Dueño = value; }
         }
 
+        public string Especie => throw new NotImplementedException();
+
         public void CambiarDueño(IPersona newDueño)
         {
             _Dueño = newDueño;

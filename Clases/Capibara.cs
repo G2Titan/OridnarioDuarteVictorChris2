@@ -1,6 +1,7 @@
 ﻿using OridnarioDuarteVictorChris.Interfaces;
 using System;
 using System.Collections.Generic;
+using OridnarioDuarteVictorChris.Clases;
 class Capibara : IMascota
 {
     private string _nombre;
@@ -56,6 +57,8 @@ class Capibara : IMascota
     }
     public IPersona Dueño { get; set; }
 
+    public string Especie => throw new NotImplementedException();
+
     public void CambiarDueño(IPersona newDueño)
     {
         Dueño = newDueño;
@@ -69,6 +72,11 @@ class Capibara : IMascota
     public void SaludarAlProfe()
     {
         Console.WriteLine("Hola profesor Duarte, tenga compasión de estas pobres almas:(");
+    }
+
+    void IMascota.Temperamento()
+    {
+        throw new NotImplementedException();
     }
 }
 
