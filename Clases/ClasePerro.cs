@@ -31,6 +31,8 @@ public class Perro : IMascota
     public IPersona Dueño { get; set; }
     string IMascota.Temperamento { get; set; }
 
+    public string Especie => throw new NotImplementedException();
+
     public void CambiarDueño(IPersona newDueño)
     {
         Dueño = newDueño;

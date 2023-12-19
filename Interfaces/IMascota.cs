@@ -7,14 +7,19 @@ using OridnarioDuarteVictorChris.Interfaces;
 
 namespace OridnarioDuarteVictorChris.Interfaces
 {
+
     public interface IMascota
     {
         public int id { get; }
-        public string Nombre { get; set; } 
+        public string Nombre { get; set; }
+
+        string Especie { get; }
         public int Edad {  get; set; }
         public string Temperamento {  get; set; }
         public IPersona Dueño { get; set; }
        void HacerRuido();
+
+     
       public void CambiarDueño(IPersona newDueño);
     }
 }
