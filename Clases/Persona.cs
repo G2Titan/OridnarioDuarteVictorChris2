@@ -22,23 +22,22 @@ namespace OridnarioDuarteVictorChris.Clases
                 return _nombre;
             }
             set
-            {               
+            {
                 if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("El nombre no puede ser un espacio en blanco o ser vacio");
                 }
                 else { _nombre = value; }
             }
-        }       
+        }
         private static int _id = 1;
-        public int Id { get; } 
+        public int Id { get; }
         private List<IMascota> MascotasDePersonas;
         private List<IMascota> MascotasDisponibles;
         public Persona()
         {
             MascotasDePersonas = new List<IMascota>();
             Id = _id++;
-            
         }
         public List<IMascota> ObtenerMascotas()
         {
@@ -48,8 +47,8 @@ namespace OridnarioDuarteVictorChris.Clases
         }
         public void MascotaPorId(int id)
         {
-            IMascota mascota= MascotasDisponibles.Find(p=>p.id == id);
-            if (mascota !=null)
+            IMascota mascota = MascotasDisponibles.Find(p => p.id == id);
+            if (mascota != null)
             {
                 AgregarMascota(mascota);
             }
@@ -76,10 +75,10 @@ namespace OridnarioDuarteVictorChris.Clases
                     Thread.Sleep(1500);
                 }
             }
-            else if(MascotasDePersonas==null)
+            else if (MascotasDePersonas == null)
             {
                 Console.WriteLine($"{this.Nombre}, No tienes ninguna mascota:( ");
             }
-        }        
+        }
     }
 }
