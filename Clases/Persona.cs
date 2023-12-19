@@ -23,7 +23,6 @@ namespace OridnarioDuarteVictorChris.Clases
                 else { _nombre = value; }
             }
         }
-
         private static int _id = 1;
         public int Id { get; }
         string IPersona.Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -80,6 +79,7 @@ namespace OridnarioDuarteVictorChris.Clases
                 }
             }
             else if (MascotasDePersonas.Count == 0)
+
             {
                 Console.WriteLine($"{this.Nombre}, No tienes ninguna mascota:( ");
             }
