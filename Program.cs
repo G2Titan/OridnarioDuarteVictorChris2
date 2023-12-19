@@ -41,10 +41,10 @@ namespace OridnarioDuarteVictorChris.Clases
                             MenuAdministracionCentro();
                             break;
                         case 2:
-                            // Implementar lógica para Administración de adopciones
+                            MenuCentroAdopciones();
                             break;
                         case 3:
-                            // Implementar lógica para Administración de bienestar animal
+                            //MenuBienestarAnimal();
                             break;
                         case 4:
                             SimulacionInteracciones();
@@ -85,7 +85,7 @@ namespace OridnarioDuarteVictorChris.Clases
                             MenuAdministracionPersonas();
                             break;
                         case 2:
-                            // Implementar lógica para Administración de mascotas
+                            AdminMascotas(); //Falta por implementar
                             break;
                         case 3:
                             Console.WriteLine("Regresando al menú anterior...");
@@ -201,7 +201,7 @@ namespace OridnarioDuarteVictorChris.Clases
                 {
                     Console.WriteLine($"Información de la persona:");
                     Console.WriteLine($"ID: {persona.Id}, Nombre: {persona.Nombre}");
-                   
+
                 }
                 else
                 {
@@ -261,7 +261,8 @@ namespace OridnarioDuarteVictorChris.Clases
                             MostrarMascotasRegistradas();
                             break;
                         case 2:
-                           // RegistrarMascotaNueva();
+                            RegistrarMascotaNueva();
+                            //Falta por implementar
                             break;
                         case 3:
                             BuscarMascotasPorEspecie();
@@ -360,9 +361,100 @@ namespace OridnarioDuarteVictorChris.Clases
                 Console.WriteLine("Entrada no válida. El ID debe ser un número entero.");
             }
         }
+        private void RegistrarMascotaNueva()
+        {
+            //Falta por implementar
+            Console.WriteLine("Ahorita nos encontramos de -vacaciones-");
+        }
+        private void MenuCentroAdopciones()
+        {
+            int opcion;
 
+            do
+            {
+                Console.WriteLine("Centro de adopción:)");
+                Console.WriteLine("1 - Ver mascotas disponibles");
+                Console.WriteLine("2 - Adoptar mascotas");
+                Console.WriteLine("3 - Regresar a menú anterior");
+                Console.Write("Seleccione una opción: ");
 
+                if (int.TryParse(Console.ReadLine(), out opcion))
+                {
+                    switch (opcion)
+                    {
+                        case 1:
+                            VerMascotasDisponibles();
+                            break;
+                        case 2:
+                            AdminMascotas();
+                            break;
+                        case 3:
+                            Console.WriteLine("Regresando al menú anterior...");
+                            break;
+                        default:
+                            Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Entrada no válida. Inténtelo de nuevo.");
+                }
+
+            } while (opcion != 3);
+
+        }
+        private void VerMascotasDisponibles()
+        {
+            Console.WriteLine("wow, hay tantas que no se pueden ni ver.");
+        }
+        private void AdminMascotas()
+        {
+            Console.WriteLine("Ahorita nos encontramos de -vacaciones-"); //falta por implementar
+        }
 
     }
+    /*public void MenuBienestarAnimal()
+    {
+        Console.WriteLine("implementar");
+    }
+    //usar comop plantilla
+    int opcion;
+
+            do
+            {
+                Console.WriteLine("Centro de adopción:)");
+                Console.WriteLine("1 - Ver mascotas disponibles");
+                Console.WriteLine("2 - Adoptar mascotas");
+                Console.WriteLine("3 - Regresar a menú anterior");
+                Console.Write("Seleccione una opción: ");
+
+                if (int.TryParse(Console.ReadLine(), out opcion))
+                {
+                    switch (opcion)
+                    {
+                        case 1:
+                            VerMascotasDisponibles();
+                            break;
+                        case 2:
+                            AdminMascotas();
+                            break;
+                        case 3:
+                            Console.WriteLine("Regresando al menú anterior...");
+                            break;
+                        default:
+                            Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Entrada no válida. Inténtelo de nuevo.");
+                }
+
+            } while (opcion != 3);
+
+        }
+    */
 }
 
