@@ -1,4 +1,7 @@
-﻿internal class Program
+﻿using OridnarioDuarteVictorChris.Clases;
+using OridnarioDuarteVictorChris.Interfaces;
+
+internal class Program
 {
 
     public static void MenuDeOpciones(string Opcion)
@@ -7,11 +10,7 @@
         switch (Opcion)
         {
             case "1":
-                {
-
-
-
-                }
+                {                }
                 break;
             case "2": break;
             case "3": break;
@@ -25,7 +24,8 @@
         }
     }
     static void Main(string[] args)
-    {
+    {  
+
         Console.WriteLine($"Bienvenido al examen Ordinario:)");
         Thread.Sleep(1500);
         Console.WriteLine($"Precione la opcion a realizar");
